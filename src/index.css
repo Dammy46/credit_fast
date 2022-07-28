@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+:root {
+    --overlay: #03a9fa;
+
+}
+body {
+  margin: 0;
+font-family: 'Poppins', sans-serif;
+
+}
+.text{
+  font-family: 'Poppins', sans-serif;
+}
+.sky {
+    --tw-bg-opacity: 1;
+    background-color: rgb(14 165 233 / var(--tw-bg-opacity));
+}
+.swal2-container {
+  z-index: 10000 !important;
+}
+.bg-orange-500 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(249 115 22 / var(--tw-bg-opacity));
+}
+.-mt-10{
+  margin-top: -2.5rem !important;
+}
