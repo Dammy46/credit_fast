@@ -4,7 +4,6 @@ import {
   CardHeader,
   CardBody,
 } from '@material-tailwind/react';
-import { Input } from '@material-tailwind/react';
 import ClientService from '../utils/ClientService';
 import Swal from 'sweetalert2'
 

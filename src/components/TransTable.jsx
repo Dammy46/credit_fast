@@ -22,6 +22,7 @@ const TransTable = () => {
       .catch((err) => {
         console.log('error for history', err);
       });
+    // eslint-disable-next-line
   }, [])
   
    return (

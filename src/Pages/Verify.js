@@ -28,12 +28,12 @@ const Verify = () => {
          });
        // eslint-disable-next-line
      }, []);
-  //  useEffect(() => {
-  //    if (AuthCheck()) {
-  //      navigate('/');
-  //    }
-  //    // eslint-disable-next-line
-  //  }, [])
+   useEffect(() => {
+     if (AuthCheck()) {
+       navigate('/');
+     }
+     // eslint-disable-next-line
+   }, [])
    
   return (
     <>
