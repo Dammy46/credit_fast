@@ -1,15 +1,15 @@
-import React from 'react'
-// import { useNavigate } from 'react-router-dom';
+import React, {useEffect} from 'react'
+import { useNavigate } from 'react-router-dom';
 import TransferForm from '../components/TransferForm'
-// import AuthCheck from '../utils/authCheckService';
+import AuthCheck from '../utils/authCheckService';
 const Transfer = () => {
-  // let navigate = useNavigate()
-  // useEffect(() => {
-  //   if (!AuthCheck()) {
-  //     navigate('/')
-  //   }
-  //   // eslint-disable-next-line
-  // }, [])
+  let navigate = useNavigate()
+  useEffect(() => {
+    if (!AuthCheck()) {
+      navigate('/')
+    }
+    // eslint-disable-next-line
+  }, [])
   
   return (
     <>

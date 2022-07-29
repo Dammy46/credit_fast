@@ -6,8 +6,10 @@ import Swal from 'sweetalert2'
 const SetPinForm = () => {
   const [pin, setPin] = useState('')
   const [confirm_pin, setConfirmPin] = useState('')
+    const [disabled, setDisabled] = useState(false);
   const handlePin = (e) => {
     e.preventDefault(e)
+    setDisabled(true)
     let param = { pin, confirm_pin }
     ClientService.newPin(param).then((res) => {
       console.log("response of pin", res)
@@ -22,6 +24,7 @@ const SetPinForm = () => {
         icon: 'error',
         text: err.response.data.errors[0].msg
       })
+      setDisabled(false);
     })
 
   }
@@ -40,30 +43,34 @@ const SetPinForm = () => {
           </h6>
           <div className="mt-10">
             <div className="mb-10">
-              <Input
-                variant="standard"
-                label="Set your wallet pin"
-                color="blue"
-                type="number"
+              <input
+                className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
+                placeholder="Pin"
+                type="password"
                 value={pin}
                 onChange={(e) => setPin(e.target.value)}
+                disabled={disabled}
               />
             </div>
             <div className="mb-10">
-              <Input
-                variant="standard"
-                label="Confirm pin"
-                color="blue"
-                type="number"
+              <input
+                className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
+                placeholder="Confirm pin"
+                
+                type="password"
                 value={confirm_pin}
                 onChange={(e) => setConfirmPin(e.target.value)}
+                disabled={disabled}
               />
             </div>
             <div className="mb-5 mt-4">
-              <button className="w-full px-6 py-4 rounded-xl bg-blue-500 transition"
-              onClick={handlePin}>
-                <span className="font-semibold text-white text-lg">
-                  Set pin
+              <button
+                className="w-full px-6 py-4 rounded-xl bg-blue-500 transition"
+                onClick={handlePin}
+                disabled={disabled}
+              >
+                <span className=" text-white text-lg">
+                  {disabled ? 'Loading...' : 'Set pin'}
                 </span>
               </button>
             </div>

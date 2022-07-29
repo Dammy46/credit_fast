@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import {Input} from '@material-tailwind/react'
 import Swal from 'sweetalert2'
 import ClientService from '../utils/ClientService'
 const Login = () => {
@@ -101,7 +100,6 @@ const Login = () => {
           src="https://images.unsplash.com/photo-1488998527040-85054a85150e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGJhbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
           alt="banking-img"
         />
-
       </div>
 
       <div className="relative h-full ml-auto lg:w-1/2 bg-white">
@@ -111,11 +109,11 @@ const Login = () => {
               <p className="">PAYFAST.</p>
             </div>
             <p className="font-medium text-lg text-gray-600">
-              Welcome to Payfast !  L   ogin first
+              Welcome to Payfast ! Login first
             </p>
           </div>
 
-          <div className="mt-12">
+          <div className="mt-12 mb-4">
             <button className="w-full py-4 px-6 rounded-xl bg-blue-50 hover:bg-blue-100 focus:bg-blue-100 active:bg-blue-200">
               <div className="flex gap-4 justify-center">
                 {google}
@@ -132,44 +130,33 @@ const Login = () => {
             </span>
           </div>
 
-          <form action="" className="space-y-6 py-6">
-
-            <div>
-              {/* <input
+          <form action="" className="space-y-6 pb-6 pt-16">
+            <div className="mb-5">
+              <input
                 type="email"
                 placeholder="Email address"
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={disabled}
-                className="w-full py-4 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
-              /> */}
-              <Input
-                className="w-full py-4 px-6"
-                size="lg"
-                variant="standard"
-                label="Email address"
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={disabled}
-                value={email}
-        
+                className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:border-red-400 focus:invalid:outline-none focus:outline-none"
+                
               />
             </div>
 
             <div className="">
-              <Input
-                className="w-full py-4 px-6"
-                size="lg"
-                variant="standard"
-                label="Password"
+              <input
+                className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
+                placeholder="Enter your passwords"
+                type="passwords"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 disabled={disabled}
-   
+                
               />
             </div>
 
             <div>
               <button
-                className="w-full px-6 py-4 rounded-xl bg-blue-500 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800 mt-10"
+                className="w-full px-6 py-4 rounded-xl bg-blue-500 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800 mt-5"
                 onClick={handleLogin}
                 disabled={disabled}
               >
@@ -179,7 +166,7 @@ const Login = () => {
               </button>
               <p className="w-max p-3 -ml-3">
                 <span className="text-sm tracking-wide ">
-                  Doon't have an account ? {' '}
+                  Doon't have an account ?{' '}
                   <Link to="/register" className="text-blue-600">
                     sign up
                   </Link>

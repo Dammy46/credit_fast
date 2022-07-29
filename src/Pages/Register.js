@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import {Input} from '@material-tailwind/react'
+
 import Swal from 'sweetalert2';
 import ClientService from '../utils/ClientService';
 
@@ -9,6 +9,7 @@ const Register = () => {
   const [last_name, setLast_name] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   let navigate = useNavigate();
   const [disabled, setDisabled] = useState(false);
 
@@ -81,14 +82,6 @@ const Register = () => {
           src="https://images.unsplash.com/photo-1488998527040-85054a85150e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGJhbmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
           alt="banking-img"
         />
-        {/* <video
-          className="w-full h-full object-cover"
-          src="https://player.vimeo.com/external/403663448.hd.mp4?s=4a7424f2792c038e3277e332b013326989a94fca&profile_id=174&oauth2_token_id=57447761"
-          muted
-          loop
-          autoPlay
-          poster="https://images.pexels.com/photos/356049/pexels-photo-356049.jpeg?auto=compress&cs=tinysrgb&w=600"
-        ></video> */}
       </div>
 
       <div className="relative h-full ml-auto lg:w-1/2 bg-white">
@@ -102,7 +95,7 @@ const Register = () => {
             </p>
           </div>
 
-          <div className="mt-12">
+          <div className="mt-12 mb-4">
             <button className="w-full py-4 px-6 rounded-xl bg-blue-50 hover:bg-blue-100 focus:bg-blue-100 active:bg-blue-200">
               <div className="flex gap-4 justify-center">
                 {google}
@@ -121,78 +114,52 @@ const Register = () => {
 
           <form action="" className="space-y-6 py-6">
             <div>
-              {/* <input
+              <input
                 type="text"
                 placeholder="First name"
                 onChange={(e) => setFirst_name(e.target.value)}
+                errorMessage="First name should be 5-10 characters and shouldn't include any special character!"
                 disabled={disabled}
-                className="w-full py-4 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
-              /> */}
-              <Input
-                className="w-full py-4 px-6"
-                size="lg"
-                variant="standard"
-                label="First name"
-                onChange={(e) => setFirst_name(e.target.value)}
-                disabled={disabled}
-                value={first_name}
-                style={{ paddingLeft: '1.5rem', paddingRight: '1.5rem' }}
+                className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:border-red-400 focus:invalid:outline-none focus:outline-none"
+                
               />
             </div>
             <div>
-              {/* <input
+              <input
                 type="text"
                 placeholder="Last name"
                 onChange={(e) => setLast_name(e.target.value)}
                 disabled={disabled}
-                className="w-full py-4 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
-              /> */}
-              <Input
-                className="w-full py-4 px-6"
-                size="lg"
-                variant="standard"
-                label="Last name"
-                onChange={(e) => setLast_name(e.target.value)}
-                disabled={disabled}
-                value={last_name}
-                style={{ paddingLeft: '1.5rem', paddingRight: '1.5rem' }}
+                errorMessage="Last name should be 5-10 characters and shouldn't include any special character!"
+                className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:border-red-400 focus:invalid:outline-none focus:outline-none"
+                
               />
             </div>
             <div>
-              {/* <input
+              <input
                 type="email"
                 placeholder="Email address"
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={disabled}
-                className="w-full py-4 px-6 ring-1 ring-gray-300 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
-              /> */}
-              <Input
-                className="w-full py-4 px-6"
-                size="lg"
-                variant="standard"
-                label="Email address"
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={disabled}
-                value={email}
-                style={{ paddingLeft: '1.5rem', paddingRight: '1.5rem' }}
+                errorMessage="it should be a valid email address !"
+                className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:border-red-400 focus:invalid:outline-none focus:outline-none"
+                
               />
             </div>
 
             <div className="">
-
-              <Input
-                className="w-full py-4 px-6"
-                size="lg"
-                variant="standard"
-                label="Password"
-                value={password}
+              <input
+                type="password"
+                placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 disabled={disabled}
-                style={{ paddingLeft: '1.5rem', paddingRight: '1.5rem' }}
+                errorMessage="Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!"
+                className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:border-red-400 focus:invalid:outline-none focus:outline-none"
+                
               />
             </div>
 
-            <div >
+            <div>
               <button
                 className="w-full px-6 py-4 rounded-xl bg-blue-500 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800 mt-10"
                 onClick={handleRegister}
@@ -204,7 +171,10 @@ const Register = () => {
               </button>
               <p className="w-max p-3 -ml-3">
                 <span className="text-sm tracking-wide ">
-                  Already have an account ? <Link to='/' className="text-blue-600">sign in</Link>
+                  Already have an account ?{' '}
+                  <Link to="/" className="text-blue-600">
+                    sign in
+                  </Link>
                 </span>
               </p>
             </div>

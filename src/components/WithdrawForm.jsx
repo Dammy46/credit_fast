@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardHeader, CardBody, Input, Select, Option } from '@material-tailwind/react';
+import { Card, CardHeader, CardBody } from '@material-tailwind/react';
 import { useState, useEffect } from 'react';
 import ClientService from '../utils/ClientService';
 import Swal from 'sweetalert2'
@@ -17,6 +17,7 @@ const WithdrawForm = () => {
       .then((res) => {
         const banks = res.data.result;
         setArry([...banks, arry]);
+        console.log("arry", arry)
       })
       .catch((err) => {
         console.log('error', err);
@@ -25,6 +26,7 @@ const WithdrawForm = () => {
   }, [])
    const handleWithdraw = (e) => {
      e.preventDefault();
+     console.log("bank code", bank_code)
      const param = { amount, bank_code, account_number, wallet_pin };
      ClientService.withdraw(param)
        .then((res) => {
@@ -68,10 +70,9 @@ const WithdrawForm = () => {
           </h6>
           <div className="mt-10">
             <div className="mb-10">
-              <Input
-                variant="standard"
-                label="Amount"
-                color="blue"
+              <input
+                className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
+                placeholder="Amount"
                 type="number"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
@@ -79,23 +80,23 @@ const WithdrawForm = () => {
               />
             </div>
             <div className="mb-10">
-              <Select
-                variant="standard"
-                label="Select bank"
-                onChange={(e) => setBankCode(e.target.value)}>
-                <Option>Material Tailwind HTML</Option>
-                <Option>Material Tailwind React</Option>
-                <Option>Material Tailwind Vue</Option>
-                <Option>Material Tailwind Angular</Option>
-                <Option>Material Tailwind Svelte</Option>
-              </Select>
+              <select
+                className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
+                onChange={(e) => setBankCode(e.target.value)}
+                value={bank_code}
+              >
+                {arry.map((item, i) => (
+                  <option key={i} value={item.code}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div className="mb-10">
-              <Input
-                variant="standard"
-                label="Account number"
-                color="blue"
+              <input
+                className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
+                placeholder="Accont number"
                 type="number"
                 value={account_number}
                 onChange={(e) => setAccountNumber(e.target.value)}
@@ -103,11 +104,10 @@ const WithdrawForm = () => {
               />
             </div>
             <div className="mb-10">
-              <Input
-                variant="standard"
-                label="Enter your wallet pin"
-                color="blue"
-                type="number"
+              <input
+                className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
+                placeholder="Enter your wallet pin"
+                type="password"
                 value={wallet_pin}
                 onChange={(e) => setWalletPin(e.target.value)}
                 disabled={disabled}
@@ -119,8 +119,8 @@ const WithdrawForm = () => {
                 onClick={handleWithdraw}
                 disabled={disabled}
               >
-                <span className="font-semibold text-white text-lg">
-                  Withdraw
+                <span className=" text-white text-lg">
+                  {disabled ? 'Loading...' : 'withdraw'}
                 </span>
               </button>
             </div>

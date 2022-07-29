@@ -11,4 +11,3 @@ module.exports = withMT({
   },
   plugins: [],
 });
-  // content: ['./src/**/*.{js,jsx}'],

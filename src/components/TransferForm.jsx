@@ -6,7 +6,7 @@ import {
 } from '@material-tailwind/react';
 import { Input } from '@material-tailwind/react';
 import ClientService from '../utils/ClientService';
-
+import Swal from 'sweetalert2'
 
 
 
@@ -14,15 +14,23 @@ const TransferForm = () => {
   const [amount, setAmount] = useState('')
   const [email, setEmail] = useState('');
   const [pin, setPin] = useState('')
+  const [disabled, setDisabled] = useState(false)
 
 
   const handleTransfer = (e) => {
     e.preventDefault()
+    setDisabled(true)
     const param = { amount, email, pin }
     ClientService.transfer(param).then((res) => {
       console.log("response from the transfer", res)
+      setDisabled(true)
     }).catch((err) => {
       console.log("error from the transfer", err)
+      Swal.fire({
+        icon: 'error',
+        text: err.response.data.errors[0].msg
+      })
+      setDisabled(false)
     })
   }
 
@@ -43,43 +51,44 @@ const TransferForm = () => {
           </h6>
           <div className="mt-10">
             <div className="mb-10">
-              <Input
-                variant="standard"
-                label="Amount"
-                color="blue"
+              <input
+                className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
+                placeholder="Amount"
                 type="number"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
+                disabled={disabled}
               />
             </div>
 
             <div className="mb-10">
-              <Input
-                variant="standard"
-                label="Enter the email address"
-                color="blue"
+              <input
+                className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
+                placeholder="Enter your email address"
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                disabled={disabled}
               />
             </div>
             <div className="mb-10">
-              <Input
-                variant="standard"
-                label="Enter your wallet pin"
-                color="blue"
-                type="number"
+              <input
+                className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
+                placeholder="Enter your wallet pin"
+                type="password"
                 value={pin}
                 onChange={(e) => setPin(e.target.value)}
+                disabled={disabled}
               />
             </div>
             <div className="mb-5 mt-4">
               <button
                 className="w-full px-6 py-4 rounded-xl bg-blue-500 transition"
                 onClick={handleTransfer}
+                disabled={disabled}
               >
                 <span className="font-semibold text-white text-lg">
-                  Transfer
+                  {disabled ? 'Loading....' : 'Transfer'}
                 </span>
               </button>
             </div>

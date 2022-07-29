@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ClientService from '../utils/ClientService';
-// import AuthCheck from '../utils/authCheckService';
+import AuthCheck from '../utils/authCheckService';
 import BalanceCard from '../components/BalanceCard';
 import Banner from '../components/Banner';
 import Table from '../components/TransTable';
 
 const Dashboard = () => {
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
   const [first_name, setFirst_name] = useState('');
   const [last_name, setLast_name] = useState('');
   useEffect(() => {
@@ -20,11 +20,11 @@ const Dashboard = () => {
         console.log('error', err);
       });
   });
-  // useEffect(() => {
-  //   if (!AuthCheck()) {
-  //     navigate('/');
-  //   }
-  // });
+  useEffect(() => {
+    if (!AuthCheck()) {
+      navigate('/');
+    }
+  });
   return (
     
     <>

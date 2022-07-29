@@ -14,7 +14,8 @@ import { useNavigate } from 'react-router-dom';
 const BalanceCard = ({ first, last }) => {
     const [amount, setAmount] = useState('');
     let navigate = useNavigate();
-    const [balance, setBalance] = useState('');
+  const [balance, setBalance] = useState('');
+
     useEffect(() => {
       ClientService.balance()
         .then((res) => {
@@ -40,7 +41,7 @@ const BalanceCard = ({ first, last }) => {
             icon: 'warning',
             text: err.response.data.message,
           });
-            navigate('/app/setPin')
+            navigate('/wallet/setPin')
         });
       //eslint-disable-next-line
     }, []);
@@ -81,7 +82,9 @@ const BalanceCard = ({ first, last }) => {
                   label="Amount"
                   className="mb-5"
                   value={amount}
-                  onChange={(e) => setAmount(e.target.value)}/>
+                  onChange={(e) => setAmount(e.target.value)}
+                  type="number"
+                />
               </div>
               <div className="w-full flex justify-center">
                 <Button onClick={handleDeposit}>Button</Button>
@@ -91,8 +94,7 @@ const BalanceCard = ({ first, last }) => {
         </div>
       </CardHeader>
       <CardBody>
-        <div className="relative h-auto">
- 
+        <div className="relative h-auto text-lg">
           {new Intl.NumberFormat('ja-JP', {
             style: 'currency',
             currency: 'NGN',

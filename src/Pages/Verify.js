@@ -5,16 +5,17 @@ import ClientService from '../utils/ClientService'
 import Swal from 'sweetalert2'
 const Verify = () => {
    let navigate = useNavigate()
-     const { search } = useLocation();
+  const { search } = useLocation();
+  console.log("params", search)
 
      useEffect(() => {
        ClientService.verify(search)
          .then((res) => {
            console.log('verify', res);
-           // Swal.fire({
-           //   icon: 'success',
-           //   text: res.data.message,
-           // });
+           Swal.fire({
+             icon: 'success',
+             text: res.data.message,
+           });
            navigate('/wallet/dashboard');
          })
          .catch((err) => {
@@ -27,18 +28,21 @@ const Verify = () => {
          });
        // eslint-disable-next-line
      }, []);
-   useEffect(() => {
-     if (AuthCheck()) {
-       navigate('/');
-     }
-     // eslint-disable-next-line
-   }, [])
+  //  useEffect(() => {
+  //    if (AuthCheck()) {
+  //      navigate('/');
+  //    }
+  //    // eslint-disable-next-line
+  //  }, [])
    
   return (
-     <div className='flex justify-center content-center h-screen flex-col'>
-        <h2 className='text-center'>Verifying.....</h2>
-    </div>
-  )
+    <>
+      <div className="bg-blue-500 px-3 md:px-8 h-40"></div>
+      <div className="flex justify-center content-center h-screen flex-col">
+        <h2 className="text-center">Verifying.....</h2>
+      </div>
+    </>
+  );
 }
 
 export default Verify

@@ -19,7 +19,7 @@ const Sidebar = () => {
             <ul className="flex-col min-w-full flex list-none">
               <li className="rounded-lg mb-4">
                 <NavLink
-                  to="/app/dashboard"
+                  to="/wallet/dashboard"
                   className="flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg"
                 >
                   Dashboard
@@ -27,7 +27,7 @@ const Sidebar = () => {
               </li>
               <li className="rounded-lg mb-2">
                 <NavLink
-                  to="/app/transfer"
+                  to="/wallet/transfer"
                   className="flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg"
                 >
                   Transfer Fund
@@ -35,7 +35,7 @@ const Sidebar = () => {
               </li>
               <li className="rounded-lg mb-2 ">
                 <NavLink
-                  to="/app/withdraw"
+                  to="/wallet/withdraw"
                   className="flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg"
                 >
                   Withdraw
@@ -43,7 +43,7 @@ const Sidebar = () => {
               </li>
               <li className="rounded-lg mb-2 ">
                 <NavLink
-                  to="/app/history"
+                  to="/wallet/history"
                   className="flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg"
                 >
                   Transaction history
@@ -51,7 +51,7 @@ const Sidebar = () => {
               </li>
               <li className="rounded-lg mb-2 text-gray-700">
                 <NavLink
-                  to="/app/setPin"
+                  to="/wallet/setPin"
                   className="flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg"
                 >
                   Set pin

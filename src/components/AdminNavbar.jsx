@@ -27,11 +27,11 @@ const AdminNavbar = ({ showSidebar, setShowSidebar }) => {
   const location = useLocation().pathname;
   const openNav = () => {
     setShowSidebar('left-0')
-    console.log("showNav", showSidebar)
+
   }
   const closeNav = () => {
     setShowSidebar('-left-64')
-      console.log('close nav', showSidebar);
+
   }
   useEffect(() => {
     if (!AuthCheck()) {
