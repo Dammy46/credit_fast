@@ -17,6 +17,7 @@ const SetPinForm = () => {
         icon: 'success',
         text: res.data.message
       })
+      setDisabled(false)
 
     }).catch((err) => {
       console.log("error of pin", err)
@@ -56,7 +57,6 @@ const SetPinForm = () => {
               <input
                 className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
                 placeholder="Confirm pin"
-                
                 type="password"
                 value={confirm_pin}
                 onChange={(e) => setConfirmPin(e.target.value)}
@@ -65,7 +65,9 @@ const SetPinForm = () => {
             </div>
             <div className="mb-5 mt-4">
               <button
-                className="w-full px-6 py-4 rounded-xl bg-blue-500 transition"
+                className={`w-full px-6 py-4 rounded-xl ${
+                  disabled ? 'bg-blue-grey-200' : 'bg-blue-500'
+                } transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800 mt-5`}
                 onClick={handlePin}
                 disabled={disabled}
               >

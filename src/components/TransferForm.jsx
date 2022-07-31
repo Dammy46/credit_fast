@@ -11,18 +11,22 @@ import Swal from 'sweetalert2'
 
 const TransferForm = () => {
   const [amount, setAmount] = useState('')
-  const [email, setEmail] = useState('');
-  const [pin, setPin] = useState('')
+  const [wallet_code_or_email, setEmail] = useState('');
+  const [wallet_pin, setPin] = useState('');
   const [disabled, setDisabled] = useState(false)
 
 
   const handleTransfer = (e) => {
     e.preventDefault()
     setDisabled(true)
-    const param = { amount, email, pin }
+    const param = { amount, wallet_code_or_email, wallet_pin };
     ClientService.transfer(param).then((res) => {
       console.log("response from the transfer", res)
-      setDisabled(true)
+      setDisabled(false)
+      Swal.fire({
+        icon: 'success',
+        text: 'Transfer successful'
+      })
     }).catch((err) => {
       console.log("error from the transfer", err)
       Swal.fire({
@@ -65,7 +69,7 @@ const TransferForm = () => {
                 className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
                 placeholder="Enter your email address"
                 type="text"
-                value={email}
+                value={wallet_code_or_email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={disabled}
               />
@@ -75,14 +79,16 @@ const TransferForm = () => {
                 className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
                 placeholder="Enter your wallet pin"
                 type="password"
-                value={pin}
+                value={wallet_pin}
                 onChange={(e) => setPin(e.target.value)}
                 disabled={disabled}
               />
             </div>
             <div className="mb-5 mt-4">
               <button
-                className="w-full px-6 py-4 rounded-xl bg-blue-500 transition"
+                className={`w-full px-6 py-4 rounded-xl ${
+                  disabled ? 'bg-blue-grey-200' : 'bg-blue-500'
+                } transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800 mt-5`}
                 onClick={handleTransfer}
                 disabled={disabled}
               >

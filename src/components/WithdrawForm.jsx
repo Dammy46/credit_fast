@@ -35,6 +35,7 @@ const WithdrawForm = () => {
            icon: 'success',
            text: res.data.message,
          });
+         setDisabled(false)
        })
        .catch((err) => {
          console.log(err);
@@ -115,7 +116,9 @@ const WithdrawForm = () => {
             </div>
             <div className="mb-5 mt-4">
               <button
-                className="w-full px-6 py-4 rounded-xl bg-blue-500 transition"
+                className={`w-full px-6 py-4 rounded-xl ${
+                  disabled ? 'bg-blue-grey-200' : 'bg-blue-500'
+                } transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800 mt-5`}
                 onClick={handleWithdraw}
                 disabled={disabled}
               >

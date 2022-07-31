@@ -87,7 +87,7 @@ const BalanceCard = ({ first, last }) => {
                 />
               </div>
               <div className="w-full flex justify-center">
-                <Button onClick={handleDeposit}>Button</Button>
+                <Button onClick={handleDeposit}>deposit</Button>
               </div>
             </PopoverContent>
           </Popover>

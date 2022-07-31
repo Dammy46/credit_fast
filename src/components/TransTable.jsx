@@ -17,7 +17,7 @@ const TransTable = () => {
         console.log("trans", trans)
         setHistory([...trans, history]);
         setLoading(false);
-            console.log('history', history);
+        console.log('history', history);
       })
       .catch((err) => {
         console.log('error for history', err);
@@ -53,16 +53,16 @@ const TransTable = () => {
                <thead>
                  <tr>
                    <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
-                     Payment
+                     Payment method
                    </th>
                    <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
-                     Describtion
+                     Description
                    </th>
                    <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
                      Status
                    </th>
                    <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
-                     Inflow
+                     Transaction reference
                    </th>
                    <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
                      Amount
@@ -73,31 +73,32 @@ const TransTable = () => {
                  </tr>
                </thead>
                <tbody>
-                 {/* {history.map((data) => (
-                   <tr key={data.user_id}>
-                     <th
-                      
-                       className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left"
+                 {history.slice(0, 6).map((data, i) => (
+                   <tr key={i} className="border-b border-gray-200">
+                     <td className="align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left uppercase">
+                       {data.payment_method}
+                     </td>
+                     <td className=" align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                       {data.description}
+                     </td>
+                     <td className=" align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                       {data.status}
+                     </td>
+                     <td className="align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                       {data.transaction_reference}
+                     </td>
+                     <td
+                       className={`align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left ${
+                         data.is_inflow ? 'text-green-300' : 'text-red-500'
+                       }`}
                      >
-                       {data.amount}
-                     </th>
-                     <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                       {data}
+                       {data.is_inflow ? `+${data.amount}` : `-${data.amount}`}
                      </td>
-                     <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                       {data}
-                     </td>
-                     <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                       {data}
-                     </td>
-                     <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                       {data}
-                     </td>
-                     <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                       {data}
+                     <td className=" align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                       {data.created_at}
                      </td>
                    </tr>
-                 ))} */}
+                 ))}
                </tbody>
              </table>
            )}

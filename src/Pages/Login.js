@@ -138,7 +138,6 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={disabled}
                 className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:border-red-400 focus:invalid:outline-none focus:outline-none"
-                
               />
             </div>
 
@@ -146,17 +145,18 @@ const Login = () => {
               <input
                 className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none focus:outline-none"
                 placeholder="Enter your passwords"
-                type="passwords"
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 disabled={disabled}
-                
               />
             </div>
 
             <div>
               <button
-                className="w-full px-6 py-4 rounded-xl bg-blue-500 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800 mt-5"
+                className={`w-full px-6 py-4 rounded-xl ${
+                  disabled ? 'bg-blue-grey-200' : 'bg-blue-500'
+                } transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800 mt-5`}
                 onClick={handleLogin}
                 disabled={disabled}
               >

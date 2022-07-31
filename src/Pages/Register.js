@@ -118,10 +118,8 @@ const Register = () => {
                 type="text"
                 placeholder="First name"
                 onChange={(e) => setFirst_name(e.target.value)}
-                errorMessage="First name should be 5-10 characters and shouldn't include any special character!"
                 disabled={disabled}
                 className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:border-red-400 focus:invalid:outline-none focus:outline-none"
-                
               />
             </div>
             <div>
@@ -130,9 +128,7 @@ const Register = () => {
                 placeholder="Last name"
                 onChange={(e) => setLast_name(e.target.value)}
                 disabled={disabled}
-                errorMessage="Last name should be 5-10 characters and shouldn't include any special character!"
                 className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:border-red-400 focus:invalid:outline-none focus:outline-none"
-                
               />
             </div>
             <div>
@@ -141,9 +137,7 @@ const Register = () => {
                 placeholder="Email address"
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={disabled}
-                errorMessage="it should be a valid email address !"
                 className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:border-red-400 focus:invalid:outline-none focus:outline-none"
-                
               />
             </div>
 
@@ -153,15 +147,15 @@ const Register = () => {
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 disabled={disabled}
-                errorMessage="Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!"
                 className="w-full py-4 px-6 border border-grey-500 rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:border-red-400 focus:invalid:outline-none focus:outline-none"
-                
               />
             </div>
 
             <div>
               <button
-                className="w-full px-6 py-4 rounded-xl bg-blue-500 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800 mt-10"
+                className={`w-full px-6 py-4 rounded-xl ${
+                  disabled ? 'bg-blue-grey-200' : 'bg-blue-500'
+                } transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800 mt-10`}
                 onClick={handleRegister}
                 disabled={disabled}
               >
