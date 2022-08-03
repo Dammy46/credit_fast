@@ -41,8 +41,9 @@ const TransTable = () => {
        <CardBody>
          <div className="overflow-x-auto">
            {loading ? (
-             <div className="flex justify-center content-center items-center">
-               Loading.....
+             <div className="flex flex-col justify-center content-center items-center">
+               <div className='spinner'></div>
+               <h2 className='mt-10'> Loading.....</h2>
              </div>
            ) : !history.length ? (
              <div className="flex justify-center content-center items-center">

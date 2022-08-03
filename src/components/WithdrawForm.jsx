@@ -86,6 +86,9 @@ const WithdrawForm = () => {
                 onChange={(e) => setBankCode(e.target.value)}
                 value={bank_code}
               >
+                <option value="" disabled>
+                  Select bank
+                </option>
                 {arry.map((item, i) => (
                   <option key={i} value={item.code}>
                     {item.name}
