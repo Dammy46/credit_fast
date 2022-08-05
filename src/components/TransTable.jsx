@@ -15,7 +15,7 @@ const TransTable = () => {
         console.log('history', res);
         let trans = res.data.result.data
         console.log("trans", trans)
-        setHistory([...trans, history]);
+        setHistory([...trans]);
         setLoading(false);
         console.log('history', history);
       })

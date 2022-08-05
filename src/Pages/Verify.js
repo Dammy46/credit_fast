@@ -38,8 +38,9 @@ const Verify = () => {
   return (
     <>
       <div className="bg-blue-500 px-3 md:px-8 h-40"></div>
-      <div className="flex justify-center content-center h-screen flex-col">
-        <h2 className="text-center">Verifying.....</h2>
+      <div className="flex flex-col justify-center content-center items-center">
+        <div className="spinner"></div>
+        <h2 className="mt-10"> Loading.....</h2>
       </div>
     </>
   );
