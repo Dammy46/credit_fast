@@ -16,7 +16,7 @@ const FullTrans = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.log('error for history', err);
+        console.log(err);
       });
     // eslint-disable-next-line
   }, []);
