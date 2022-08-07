@@ -1,61 +1,57 @@
-import React from 'react'
+import React from 'react';
 import { Card, CardHeader, CardBody } from '@material-tailwind/react';
 import { useState, useEffect } from 'react';
 import ClientService from '../utils/ClientService';
-import Swal from 'sweetalert2'
-
+import Swal from 'sweetalert2';
 
 const WithdrawForm = () => {
-  const [amount, setAmount] = useState('')
-      const [bank_code, setBankCode] = useState('');
-      const [account_number, setAccountNumber] = useState('');
-      const [wallet_pin, setWalletPin] = useState('');
-      const [disabled, setDisabled] = useState(false);
+  const [amount, setAmount] = useState('');
+  const [bank_code, setBankCode] = useState('');
+  const [account_number, setAccountNumber] = useState('');
+  const [wallet_pin, setWalletPin] = useState('');
+  const [disabled, setDisabled] = useState(false);
   const [arry, setArry] = useState([]);
   useEffect(() => {
     ClientService.banks()
       .then((res) => {
         const banks = res.data.result;
         setArry([...banks, arry]);
-        console.log("arry", arry)
+        console.log('arry', arry);
       })
       .catch((err) => {
         console.log('error', err);
       });
     // eslint-disable-next-line
-  }, [])
-   const handleWithdraw = (e) => {
-     e.preventDefault();
-     console.log("bank code", bank_code)
-     const param = { amount, bank_code, account_number, wallet_pin };
-     ClientService.withdraw(param)
-       .then((res) => {
-         console.log(res);
-         Swal.fire({
-           icon: 'success',
-           text: res.data.message,
-         });
-         setDisabled(false)
-       })
-       .catch((err) => {
-         console.log(err);
-         if (err.response.status === 400) {
-           Swal.fire({
-             icon: 'error',
-             text: err.response.data.errors[0].msg,
-           });
-           setDisabled(false);
-         } else {
-           Swal.fire({
-             icon: 'error',
-             text: err.response.data.message,
-           });
-           setDisabled(false);
-         }
-       });
-   };
+  }, []);
+  const handleWithdraw = (e) => {
+    e.preventDefault();
+    console.log('bank code', bank_code);
+    const param = { amount, bank_code, account_number, wallet_pin };
+    ClientService.withdraw(param)
+      .then((res) => {
+        Swal.fire({
+          icon: 'success',
+          text: res.data.message,
+        });
+        setDisabled(false);
+      })
+      .catch((err) => {
+        if (err.response.status === 400) {
+          Swal.fire({
+            icon: 'error',
+            text: err.response.data.errors[0].msg,
+          });
+          setDisabled(false);
+        } else {
+          Swal.fire({
+            icon: 'error',
+            text: err.response.data.message,
+          });
+          setDisabled(false);
+        }
+      });
+  };
 
-  
   return (
     <Card className="p-4 shadow-md">
       <CardHeader
@@ -135,6 +131,6 @@ const WithdrawForm = () => {
       </CardBody>
     </Card>
   );
-}
+};
 
-export default WithdrawForm
+export default WithdrawForm;

@@ -21,14 +21,14 @@ const TransferForm = () => {
     setDisabled(true)
     const param = { amount, wallet_code_or_email, wallet_pin };
     ClientService.transfer(param).then((res) => {
-      console.log("response from the transfer", res)
+      
       setDisabled(false)
       Swal.fire({
         icon: 'success',
         text: 'Transfer successful'
       })
     }).catch((err) => {
-      console.log("error from the transfer", err)
+    
       Swal.fire({
         icon: 'error',
         text: err.response.data.errors[0].msg

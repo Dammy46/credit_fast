@@ -24,7 +24,8 @@ const Dashboard = () => {
     if (!AuthCheck()) {
       navigate('/');
     }
-  });
+    // eslint-disable-next-line
+  }, []);
   return (
     
     <>

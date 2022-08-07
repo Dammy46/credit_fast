@@ -60,3 +60,40 @@ font-family: 'Poppins', sans-serif;
       box-shadow: inset -5px 0 0 5px currentColor;
     }
   }
+  .sexy{
+    text-shadow: 1px 1px 0px #e7eef1, 3px 3px 0px rgba(0, 0, 0, 0.1);
+  }
+  .overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    opacity: 0;
+    background: #000;
+    pointer-events: none;
+    transform: scale(0.5);
+  }
+  input[type='checkbox']:checked ~ .overlay{
+    pointer-events: all;
+    opacity: 0.9;
+    transform: scale(1);
+    transition: all 0.5s ease;
+  }
+  .model{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    transform: translate(-50%, -50%) scale(0.5);
+    pointer-events: none;
+    opacity: 0;
+  }
+  input[type='checkbox']:checked ~ .model{
+    pointer-events: all;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    transition: all 0.5s ease;
+    transition-delay: 0.1s;
+  }

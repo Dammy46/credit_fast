@@ -1,34 +1,32 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react';
 import { Card, CardBody, CardHeader } from '@material-tailwind/react';
 import ClientService from '../utils/ClientService';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 const SetPinForm = () => {
-  const [pin, setPin] = useState('')
-  const [confirm_pin, setConfirmPin] = useState('')
-    const [disabled, setDisabled] = useState(false);
+  const [pin, setPin] = useState('');
+  const [confirm_pin, setConfirmPin] = useState('');
+  const [disabled, setDisabled] = useState(false);
   const handlePin = (e) => {
-    e.preventDefault(e)
-    setDisabled(true)
-    let param = { pin, confirm_pin }
-    ClientService.newPin(param).then((res) => {
-      console.log("response of pin", res)
-      Swal.fire({
-        icon: 'success',
-        text: res.data.message
+    e.preventDefault(e);
+    setDisabled(true);
+    let param = { pin, confirm_pin };
+    ClientService.newPin(param)
+      .then((res) => {
+        Swal.fire({
+          icon: 'success',
+          text: res.data.message,
+        });
+        setDisabled(false);
       })
-      setDisabled(false)
-
-    }).catch((err) => {
-      console.log("error of pin", err)
-      Swal.fire({
-        icon: 'error',
-        text: err.response.data.errors[0].msg
-      })
-      setDisabled(false);
-    })
-
-  }
+      .catch((err) => {
+        Swal.fire({
+          icon: 'error',
+          text: err.response.data.errors[0].msg,
+        });
+        setDisabled(false);
+      });
+  };
   return (
     <Card className="p-4 shadow-md">
       <CardHeader
@@ -81,6 +79,6 @@ const SetPinForm = () => {
       </CardBody>
     </Card>
   );
-}
+};
 
-export default SetPinForm
+export default SetPinForm;

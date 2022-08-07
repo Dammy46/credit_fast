@@ -11,7 +11,7 @@ const Sidebar = () => {
       >
         <div className="flex-col items-stretch min-h-full flex-nowrap px-0 relative">
           <a href="#payfast" className="mt-2 text-center w-full inline-block">
-            <h5 color="gray">PAYFAST.</h5>
+            <h5 className='text-blue-500 text-2xl sexy'>CREDITFAST.</h5>
           </a>
           <div className="flex flex-col">
             <hr className="my-4 min-w-full" />
@@ -20,7 +20,12 @@ const Sidebar = () => {
               <li className="rounded-lg mb-4">
                 <NavLink
                   to="/wallet/dashboard"
-                  className="flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg"
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center gap-4 text-base text-white font-light px-4 py-3 rounded-lg'
+                      : 'bg-none flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg'
+                  }
+                  onClick={() => setShowSidebar('-left-64')}
                 >
                   Dashboard
                 </NavLink>
@@ -28,7 +33,12 @@ const Sidebar = () => {
               <li className="rounded-lg mb-2">
                 <NavLink
                   to="/wallet/transfer"
-                  className="flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg"
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center gap-4 text-base text-white font-light px-4 py-3 rounded-lg'
+                      : 'bg-none flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg'
+                  }
+                  onClick={() => setShowSidebar('-left-64')}
                 >
                   Transfer Fund
                 </NavLink>
@@ -36,7 +46,12 @@ const Sidebar = () => {
               <li className="rounded-lg mb-2 ">
                 <NavLink
                   to="/wallet/withdraw"
-                  className="flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg"
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center gap-4 text-base text-white font-light px-4 py-3 rounded-lg'
+                      : 'bg-none flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg'
+                  }
+                  onClick={() => setShowSidebar('-left-64')}
                 >
                   Withdraw
                 </NavLink>
@@ -44,7 +59,12 @@ const Sidebar = () => {
               <li className="rounded-lg mb-2 ">
                 <NavLink
                   to="/wallet/history"
-                  className="flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg"
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center gap-4 text-base text-white font-light px-4 py-3 rounded-lg'
+                      : 'bg-none flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg'
+                  }
+                  onClick={() => setShowSidebar('-left-64')}
                 >
                   Transaction history
                 </NavLink>
@@ -52,7 +72,12 @@ const Sidebar = () => {
               <li className="rounded-lg mb-2 text-gray-700">
                 <NavLink
                   to="/wallet/setPin"
-                  className="flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg"
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center gap-4 text-base text-white font-light px-4 py-3 rounded-lg'
+                      : 'bg-none flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg'
+                  }
+                  onClick={() => setShowSidebar('-left-64')}
                 >
                   Set pin
                 </NavLink>

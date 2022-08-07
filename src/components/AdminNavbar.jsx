@@ -13,12 +13,14 @@ import { FaTimes, FaBars } from 'react-icons/fa';
 const AdminNavbar = ({ showSidebar, setShowSidebar }) => {
     const [first_name, setFirst_name] = useState('');
   const [last_name, setLast_name] = useState('');
+  const [email, setEmail] = useState('');
   let navigate = useNavigate()
     useEffect(() => {
       ClientService.profileDetails()
         .then((res) => {
           setFirst_name(res.data.result.first_name);
           setLast_name(res.data.result.last_name);
+          setEmail(res.data.result.email)
         })
         .catch((err) => {
           console.log('error', err);
@@ -89,13 +91,16 @@ const AdminNavbar = ({ showSidebar, setShowSidebar }) => {
                       className="cursor-pointer"
                     />
                   </MenuHandler>
-                  <MenuList className='left-32'>
-                    <MenuItem>{first_name} {last_name}</MenuItem>
+                  <MenuList className="left-32">
+                    <MenuItem>
+                      {first_name} {last_name}
+                    </MenuItem>
+                    <MenuItem>
+                      {email} 
+                    </MenuItem>
                     <MenuItem>
                       <span onClick={handleLogOut}>Log out</span>
-                    
                     </MenuItem>
-
                   </MenuList>
                 </Menu>
               </div>

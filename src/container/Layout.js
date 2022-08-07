@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import React, {useEffect} from 'react';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import Sidebar from '../components/sideBar';
 import Dashboard from '../Pages/Dashboard';
 import SetPin from '../Pages/SetPin';
@@ -7,8 +7,17 @@ import Transfer from '../Pages/Transfer';
 import Withdraw from '../Pages/Withdraw';
 import History from '../Pages/History';
 import Verify from '../Pages/Verify';
+import AuthCheck from '../utils/authCheckService';
 
 const Layout = () => {
+  let navigate = useNavigate()
+  useEffect(() => {
+    if (!AuthCheck()) {
+      navigate('/')
+    }
+    // eslint-disable-next-line
+  }, [])
+  
   return (
     <>
       <Sidebar />

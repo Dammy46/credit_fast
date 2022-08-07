@@ -1,21 +1,19 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react';
 import { Card, CardHeader, CardBody } from '@material-tailwind/react';
 import ClientService from '../utils/ClientService';
 import { useLocation } from 'react-router-dom';
 const FullTrans = () => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [history, setHistory] = useState([]);
-  const {search} = useLocation()
+  const { search } = useLocation();
   useEffect(() => {
     setLoading(true);
     ClientService.transactions(search)
       .then((res) => {
-        console.log('history', res);
         let trans = res.data.result.data;
-        console.log('trans', trans);
+
         setHistory([...trans]);
         setLoading(false);
-        console.log('history', history);
       })
       .catch((err) => {
         console.log('error for history', err);
@@ -99,6 +97,6 @@ const FullTrans = () => {
       </CardBody>
     </Card>
   );
-}
+};
 
-export default FullTrans
+export default FullTrans;
