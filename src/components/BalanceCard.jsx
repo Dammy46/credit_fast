@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import ClientService from '../utils/ClientService';
+import React, { useEffect, useState } from "react";
+import ClientService from "../utils/ClientService";
 
-import { Card, CardBody, CardHeader } from '@material-tailwind/react';
-import { FaPlusCircle, FaEye, FaRegEyeSlash } from 'react-icons/fa';
-import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
+import { Card, CardBody, CardHeader } from "@material-tailwind/react";
+import { FaPlusCircle, FaEye, FaRegEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 const BalanceCard = ({ first, last }) => {
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState("");
   let navigate = useNavigate();
-  const [balance, setBalance] = useState('');
+  const [balance, setBalance] = useState("");
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
@@ -19,22 +19,22 @@ const BalanceCard = ({ first, last }) => {
       .catch((err) => {
         if (err.response.status === 500) {
           Swal.fire({
-            icon: 'warning',
-            text: ' session expired please login again',
+            icon: "warning",
+            text: " session expired please login again",
           });
-          navigate('/');
+          navigate("/");
         } else if (err.response.data === 401) {
           Swal.fire({
-            icon: 'warning',
+            icon: "warning",
             text: err.response.data.message,
           });
-          navigate('/');
+          navigate("/");
         }
         Swal.fire({
-          icon: 'warning',
+          icon: "warning",
           text: err.response.data.message,
         });
-        navigate('/wallet/setPin');
+        navigate("/wallet/setPin");
       });
     //eslint-disable-next-line
   }, []);
@@ -47,7 +47,7 @@ const BalanceCard = ({ first, last }) => {
         window.location.replace(res.data.paymentLink);
       })
       .catch((err) => {
-        console.log('errors from the deposit', err);
+        console.log("errors from the deposit", err);
         window.location.reload();
       });
   };
@@ -66,7 +66,7 @@ const BalanceCard = ({ first, last }) => {
 
         <div className="flex justify-end">
           <input type="checkbox" id="click" className="hidden" />
-          <label for="click">
+          <label htmlFor="click">
             <FaPlusCircle className="cursor-pointer" />
           </label>
           <Card className="model p-4 h-auto">
@@ -86,7 +86,7 @@ const BalanceCard = ({ first, last }) => {
                     />
                   </div>
                   <div className="mb-5">
-                    <label for="click">
+                    <label htmlFor="click">
                       <button
                         className={`w-full px-6 py-4 rounded-xl bg-blue-500
                        transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800 text-white`}
@@ -108,9 +108,9 @@ const BalanceCard = ({ first, last }) => {
           <div className="flex justify-between">
             <div className="lg:text-2xl">
               {display === false ? (
-                new Intl.NumberFormat('ja-JP', {
-                  style: 'currency',
-                  currency: 'NGN',
+                new Intl.NumberFormat("ja-JP", {
+                  style: "currency",
+                  currency: "NGN",
                 }).format(balance)
               ) : (
                 <p>******</p>

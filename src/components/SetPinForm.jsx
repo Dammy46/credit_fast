@@ -49,6 +49,7 @@ const SetPinForm = () => {
                 value={pin}
                 onChange={(e) => setPin(e.target.value)}
                 disabled={disabled}
+                
               />
             </div>
             <div className="mb-10">

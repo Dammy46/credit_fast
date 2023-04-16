@@ -1,7 +1,7 @@
 import axios from 'axios';
 import AuthService from './AuthService';
 
-const BASE_URL = 'https://my-digital-wallet.herokuapp.com';
+const BASE_URL = "https://e-wallet-system.herokuapp.com";
 
 class ClientService {
   newAccount(data) {
